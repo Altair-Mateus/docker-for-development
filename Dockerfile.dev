@@ -1,0 +1,10 @@
+FROM node:22.8.0-slim
+
+RUN apt update && \
+    apt install -y curl&& \
+    npm install -g nodemon
+
+# RUN useradd -m -u 1000 node
+
+USER node
+
