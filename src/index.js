@@ -22,7 +22,12 @@ app.get('/test-db', async function(req, res){
         database: process.env.DB_DATABASE
     });
 
-    connection.connect();
+    connection.connect(error => {
+        if (error){
+            console.error('Error connecting to database: ', error);
+            return;
+        }
+    });
     res.send('Connected to DB');
 });
 

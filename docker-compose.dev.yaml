@@ -1,12 +1,17 @@
 services:
   web:
     build:
+      args:
+        - NODEMON_VERSION=${NODEMON_VERSION:-3.1.7}
       context:  .
       dockerfile: Dockerfile.dev
     volumes:
       - .:/home/node/app
     ports:
       - 3000:3000
+    env_file:
+      - .env
+    
 
   db:
     image: mysql:8.0.30-debian
