@@ -1,0 +1,13 @@
+services:
+  web:
+    build:
+      args:
+        - NODEMON_VERSION=${NODEMON_VERSION:-3.1.7}
+      context:  .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/home/node/app
+    env_file:
+      - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
